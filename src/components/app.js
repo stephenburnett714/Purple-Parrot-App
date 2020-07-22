@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import axios from "axios";
-import Navbar from './components/Navbar'
-import Home from "./components/Home";
-import Main from "./components/Main";
-import Login from "./components/auth/Login";
-import './styles/tailwind.css';
+import Navbar from './Navbar'
+
+import Home from "./Home";
+import Dashboard from "./Main";
+import Login from "./auth/Login";
 
 export default class App extends Component {
   constructor() {
@@ -85,9 +85,9 @@ export default class App extends Component {
             />
             <Route
               exact
-              path={"/main"}
+              path={"/dashboard"}
               render={props => (
-                <Main
+                <Dashboard
                   {...props}
                   user={this.state.user}
                   loggedInStatus={this.state.loggedInStatus}
