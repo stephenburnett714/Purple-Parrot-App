@@ -231,10 +231,6 @@ module.exports = {
       default: '1',
     },
     fontFamily: {
-      neue: [
-        '"Helvetica Neue"'
-      ],
-      
       sans: [
         'system-ui',
         '-apple-system',
@@ -647,6 +643,7 @@ module.exports = {
     borderWidth: ['responsive'],
     boxShadow: ['responsive', 'hover', 'focus'],
     boxSizing: ['responsive'],
+    container: ['responsive'],
     cursor: ['responsive'],
     display: ['responsive'],
     divideColor: ['responsive'],

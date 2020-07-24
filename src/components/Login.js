@@ -1,5 +1,8 @@
 import React, { Component } from "react";
+import {NavLink} from "re"
 import axios from "axios";
+
+
 
 export default class Login extends Component {
   constructor(props) {
@@ -8,18 +11,22 @@ export default class Login extends Component {
     this.state = {
       email: "",
       password: "",
-      loginErrors: ""
+      redirect: false,
+      loginErrors: "",
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
   }
 
+
+
   handleChange(event) {
     this.setState({
-      [event.target.name]: event.target.value
+      [event.target.name]: event.target.value,
     });
   }
+
 
   handleSubmit(event) {
     const { email, password } = this.state;
@@ -30,30 +37,33 @@ export default class Login extends Component {
         {
           user: {
             email: email,
-            password: password
-          }
+            password: password,
+          },
         },
         { withCredentials: true }
       )
-      .then(response => {
-          console.log("res from login", response)
+      .then((response) => {
+        console.log("res from login", response);
+        
         if (response.data.logged_in) {
           this.props.handleSuccessfulAuth(response.data);
         }
-        {console.log(this.props.user)}
+        {
+          console.log(this.props.user);
+        }
       })
-      .catch(error => {
+      .catch((error) => {
         console.log("login error", error);
       });
     event.preventDefault();
   }
+
   
   render() {
     return (
       <div className="pt-12">
-        
+        { this.state.redirect ? (<Redirect push to="/"/>) : null }
         <form onSubmit={this.handleSubmit}>
-          
           <input
             type="email"
             name="email"
@@ -62,7 +72,6 @@ export default class Login extends Component {
             onChange={this.handleChange}
             required
           />
-          <br />
           <input
             type="password"
             name="password"
@@ -72,9 +81,10 @@ export default class Login extends Component {
             required
           />
 
-          <button type="submit">Login</button>
+          <NavLink className="bg-purple-300" type="submit">
+            Login
+          </NavLink>
         </form>
-        
       </div>
     );
   }

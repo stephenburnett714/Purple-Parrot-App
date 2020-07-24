@@ -4,7 +4,7 @@ import axios from "axios";
 import Navbar from './Navbar'
 
 import Home from "./Home";
-import Dashboard from "./Main";
+import Main from "./Main";
 import Login from "./auth/Login";
 
 export default class App extends Component {
@@ -85,9 +85,9 @@ export default class App extends Component {
             />
             <Route
               exact
-              path={"/dashboard"}
+              path={"/main"}
               render={props => (
-                <Dashboard
+                <Main
                   {...props}
                   user={this.state.user}
                   loggedInStatus={this.state.loggedInStatus}

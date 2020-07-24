@@ -23,7 +23,7 @@ display: none;
 @media (max-width: 1023.1px){ 
     
     flex-flow: column nowrap;
-    background-color: white;
+    background-color: #b794f4;;
     position: fixed;
     transform: ${({ open }) => open ? 'translateX(0)': 'translateX(100%)'};
     top: 0;
@@ -44,28 +44,24 @@ export default function NavMenu(props) {
     return (
         <Ul  open={props.open}>
             <div></div>
-            <NavLink exact to={'/'}>
-                <li onClick={() => setOpen(!open)} className="text-black text-2xl">Home</li>
+            <NavLink exact to={'/main'}>
+                <li onClick={() => setOpen(!open)} className="text-white text-2xl">Home</li>
             </NavLink>
 
-            <NavLink exact to={'/about'}>
-                <li onClick={() => setOpen(!open)} className="text-black text-2xl">About</li>
+            <NavLink exact to={'/tickets'}>
+                <li onClick={() => setOpen(!open)} className="text-white text-2xl">Tickets</li>
             </NavLink>
 
-            <NavLink exact to={'/work'}
+            <NavLink exact to={'/favorites'}
                 >
-                <li onClick={() => setOpen(!open)} className="text-black text-2xl">Work</li>
+                 <li onClick={() => setOpen(!open)} className="text-white text-2xl">Favorites</li>
             </NavLink>
 
-            <NavLink exact to={'/process'}
+            <NavLink exact to={'/profile'}
                 >
-                 <li onClick={() => setOpen(!open)} className="text-black text-2xl">Process</li>
+                <li onClick={() => setOpen(!open)} className="text-white text-2xl">Profile</li>
             </NavLink>
 
-            <NavLink to={'/'}
-                >
-                <button onClick={() => setOpen(!open)} className=" call-color p-2 rounded-md text-white text-2xl mt-4">Contact</button>
-            </NavLink>
         </Ul>
     )
 }
