@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
+import { Redirect, NavLink } from 'react-router-dom';
 
 export default class Registration extends Component {
   constructor(props) {
@@ -56,9 +57,12 @@ export default class Registration extends Component {
 
   render() {
     return (
-      <div>
-        <form onSubmit={this.handleSubmit}>
+      <div className="w-full h-full flex items-center justify-center flex-col">
+        { this.props.loggedInStatus === "LOGGED_IN" ? (<Redirect push to="/main"/>) : null }
+        <div className="text-6xl text-gray-500 pt-32 pb-32">Welcome</div>
+        <form className="flex items-center flex-col"onSubmit={this.handleSubmit}>
           <input
+          className="border-black border-b "
             type="email"
             name="email"
             placeholder="Email"
@@ -68,6 +72,7 @@ export default class Registration extends Component {
           />
           <br />
           <input
+          className="border-black border-b mt-4"
             type="user_name"
             name="user_name"
             placeholder="User Name"
@@ -77,6 +82,7 @@ export default class Registration extends Component {
           />
           <br />
           <input
+          className="border-black border-b mt-4"
             type="password"
             name="password"
             placeholder="Password"
@@ -86,6 +92,7 @@ export default class Registration extends Component {
           />
           <br />
           <input
+          className="border-black border-b mt-4"
             type="password"
             name="password_confirmation"
             placeholder="Password Confirmation"
@@ -94,8 +101,9 @@ export default class Registration extends Component {
             required
           />
           <br />
-          <button type="submit">Register</button>
+          <button className="px-8 py-2 rounded bg-purple-500 text-white mt-16 mb-4 bg-opacity-50" type="submit">Register</button>
         </form>
+        <NavLink to="/log-in" className="text-gray-500 w-20">Sign In</NavLink>
       </div>
     );
   }
