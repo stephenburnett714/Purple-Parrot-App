@@ -21,19 +21,30 @@ const EventDetails = (props) => {
   }, []);
 
 //  Confirmation Function that creates post request
-// const eventId = props.match.match.params.id
-// const userId = props.match.user.id
+const eventId = props.match.match.params.id
+const userId = props.user.id
 console.log(props.match)
-function confirmation(params) {
-    axios({
-        method: 'post',
-        url: 'http://localhost:3001/attendees',
-        attendees: {
-            // event_id: eventId,
-            // user_id: userId
-        }
-      });
-}
+
+// async function makeRequest() { {
+//     axios({
+//         method: 'post',
+//         url: 'http://localhost:3001/attendees',
+//         data: {
+//             event_id: eventId,
+//             user_id: userId
+//         }
+//       }),
+//       { withCredentials: true }
+//       .then(response => {
+//         console.log(response)
+//         if (response.data.status === "created") {
+//           this.props.handleSuccessfulAuth(response.data);
+//         }
+//       })
+//       .catch(error => {
+//         console.log("registration error", error);
+//       });
+// }
 
   return (
     <div>
@@ -75,8 +86,9 @@ function confirmation(params) {
           </div>
         </div>
         {console.log(props)}
-        {event && console.log(event)}
-        <button className="px-8 py-2 rounded bg-purple-500 text-white mt-16 mb-4 bg-opacity-50" onClick={(e) => { if (window.confirm('Are you sure you wish to register for this event?')) confirmation(e)}}>Register</button>
+        <button className="px-8 py-2 rounded bg-purple-500 text-white mt-16 mb-4 bg-opacity-50" 
+        // onClick={(e) => { if (window.confirm('Are you sure you wish to register for this event?'))}}
+        >Register</button>
       </div>
     </div>
   );
